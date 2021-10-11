@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="bulmaswatch.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pooltochten</title>
+  </head>
+  <body class="dark">
+    <div class="container">
+      <div class="columns is-mobile">
+        <div class="column">
+          <div class="block">
+            <div class="box">
+              <ul class="menu-list" id="song-list"></ul>
+            </div>
+          </div>
+          <div class="block">
+            <div class="buttons">
+              <a
+                class="button is-success is-medium"
+                id="btn"
+                onclick="window.electron.nextLine()"
+              >
+                Volgende regel
+              </a>
+            </div>
+          </div>
+          <div class="block">
+            <div class="buttons">
+              <a
+                class="button is-primary"
+                id="btn"
+                onclick="window.electron.prevLine()"
+              >
+                Vorige regel
+              </a>
+              <a
+                class="button is-primary"
+                id="btn"
+                onclick="window.electron.showLine(0)"
+              >
+                Leegmaken
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="block">
+            <div class="box">
+              <ul class="menu-list" id="lyrics"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
