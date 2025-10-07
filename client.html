@@ -6,19 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client</title>
     <style>
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-Regular.ttf);
+      }
+
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-ExtraLight.ttf);
+        font-weight: 200;
+      }
+
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-Medium.ttf);
+        font-weight: 500;
+      }
+
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-SemiBold.ttf);
+        font-weight: 600;
+      }
+
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-Bold.ttf);
+        font-weight: 700;
+      }
+
+      @font-face {
+        font-family: Playpen;
+        src: url(fonts/PlaypenSans-ExtraBold.ttf);
+        font-weight: 800;
+      }
+
       body {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: Playpen, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 8vh;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        background-color: blueviolet;
+        font-weight: 600;
       }
 
       #content {
         color: #fff;
         text-align: center;
       }
+
+      strong {
+        font-weight: 800;
+      }
+
+      em {
+        font-style: italic;
+        font-weight: 200;
+      }
+
     </style>
   </head>
   <body>
@@ -30,6 +77,8 @@
       socket.on('update', (message) => {
         if (message.line) {
           line = message.line.trim().replace(/(?:\r\n|\r|\n)/g, '<br>');
+          line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+          line = line.replace(/\*(.+?)\*/g, '<em>$1</em>');          
           document.querySelector('#content').innerHTML = line;
         }
       });

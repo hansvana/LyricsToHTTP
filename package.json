@@ -1,6 +1,6 @@
 {
   "name": "lyricstohttp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": "Hans van Arken",
   "description": "Pooltochten lyrics app",
   "main": "main.js",

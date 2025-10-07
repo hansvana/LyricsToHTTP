@@ -10,6 +10,8 @@ class WebServer {
     this.httpServer = http.createServer(this.app);
     this.ioServer = new Server(this.httpServer);
 
+    this.app.use(express.static(path.join(__dirname, 'public')));
+
     this.app.get('/', (req, res) => {
       res.sendFile(__dirname + '/client.html');
     });

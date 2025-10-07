@@ -38,14 +38,16 @@ contextBridge.exposeInMainWorld(
         if (err)
           return console.log(err);
 
-
-        lines = data.split('/');
+        data = data.replaceAll('\n\n', '\r\n\r\n');
+        lines = data.split('\r\n\r\n');
         lines.unshift('<br>\n');
         document.querySelector('#lyrics').innerHTML = "";
         currentLineIndex = 0;
         let i = 0;
         lines.forEach(line => {
           line = line.trim().replace(/(?:\r\n|\r|\n)/g, '<br>');
+          line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+          line = line.replace(/\*(.+?)\*/g, '<em>$1</em>');
           document.querySelector('#lyrics').innerHTML += `<li><a id='line${i}' class='songlines ${i === 0 ? ' currentline' : ''}' onclick='window.electron.showLine(${i})'>${line}</a></li>`;
           i++;
         });
